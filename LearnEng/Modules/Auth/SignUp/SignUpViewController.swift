@@ -141,7 +141,7 @@ class SignUpViewController: UIViewController {
                 .changeRootViewController(MenuViewController())
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Неверный логин и пароль", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "Ok", style: .default)
+            let okAction = UIAlertAction(title: "Ok", style: .default) 
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
         }

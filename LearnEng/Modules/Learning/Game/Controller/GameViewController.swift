@@ -225,15 +225,29 @@ class GameViewController: UIViewController {
                 }
             }
         }
+
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-            self.nextGame()
+            if self.countAllWords < 10 {
+                self.nextGame()
+            } else {
+                self.finishGame()
+            }
         })
     }
     
     private func addCount(add: Int) {
         countRight += add
         countAllWords += 1
+    }
+    
+    private func finishGame() {
+        let alert = UIAlertController(title: "Конец", message: "Ваш результат \(countRight) правильных(ое) слов", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { (alert) in
+            self.closeGame()
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func closeGame() {
